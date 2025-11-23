@@ -1,11 +1,11 @@
 import { createEvent } from "#base";
 import { ChatInputCommandInteraction } from "discord.js";
-import { logslashcommand } from "../../../../functions/utils/commandslogs.js";
+import { commandSlashLog } from "../../../../functions/utils/commandslogs.js";
 
 createEvent({
     name: "slash.command.event",
     event: "interactionCreate",
     async run(interaction: ChatInputCommandInteraction) {
-        logslashcommand(interaction)
+        commandSlashLog(interaction)
     }
 });

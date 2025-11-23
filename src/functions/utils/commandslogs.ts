@@ -1,25 +1,25 @@
 import { ChatInputCommandInteraction, Message } from "discord.js";
-import { commandMessageContainer } from "../../discord/containers/events/bot.event.commands.log.js";
-import { commandInteractionContainer } from "../../discord/containers/events/bot.event.commands.log.slash.js";
+import { commandPrefixLogContainer } from "../../discord/containers/events/command.prefix.log.js";
+import { commandSlashLogContainer } from "../../discord/containers/events/command.slash.log.js";
 
-export async function logcommand(command: Message) {
+export async function commandPrefixLog(command: Message) {
     const channellog = await command.guild?.channels.fetch(constants.channels.logsChannelId);
     if (!channellog?.isTextBased()) return;
 
     await channellog.send({
         flags: ["IsComponentsV2"],
-        components: [commandMessageContainer(command)],
+        components: [commandPrefixLogContainer(command)],
         allowedMentions: { parse: [] }
     });
 }
 
-export async function logslashcommand(interaction: ChatInputCommandInteraction) {
+export async function commandSlashLog(interaction: ChatInputCommandInteraction) {
     const channellog = await interaction.guild?.channels.fetch(constants.channels.logsChannelId);
     if (!channellog?.isTextBased()) return;
 
     await channellog.send({
         flags: ["IsComponentsV2"],
-        components: [commandInteractionContainer(interaction)],
+        components: [commandSlashLogContainer(interaction)],
         allowedMentions: { parse: [] }
     });
 }
