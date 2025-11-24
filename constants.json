@@ -1,35 +1,35 @@
 {
-    "colors": {
-        "default": "#2B2D31",
-        "primary": "#3b82f6",
-        "secondary": "#4f545c",
-        "success": "#22c55e",
-        "danger": "#ED4245",
-        "warning": "#fbbd23",
-        "azoxo": "#5865F2",
-        "green": "#57F287",
-        "yellow": "#FEE75C",
-        "fuchsia": "#EB459E",
-        "magic": "#c026d3",
-        "developer": "#3e70dd",
-        "balance": "#45ddc0",
-        "brilliance": "#f07d5f",
-        "nitro": "#ff6bfa",
-        "bravery": "#9c84ef"
-    },
-    "channels": {
-        "logsChannelId": "1407933678230700162",
-        "solicitacoesdpChannelId": "1407933678406995979",
-        "bopmChannelId": "1407933678406995979",
-        "suggestionsChannelId": ""
-    },
-    "suggestions": {
-        "0": {
-            "messageId": "a",
-            "userId": "b"
-        }
-    },
-    "bopm": {
-        "bopmatual": "1039"
+  "colors": {
+    "default": "#2B2D31",
+    "primary": "#3b82f6",
+    "secondary": "#4f545c",
+    "success": "#22c55e",
+    "danger": "#ED4245",
+    "warning": "#fbbd23",
+    "azoxo": "#5865F2",
+    "green": "#57F287",
+    "yellow": "#FEE75C",
+    "fuchsia": "#EB459E",
+    "magic": "#c026d3",
+    "developer": "#3e70dd",
+    "balance": "#45ddc0",
+    "brilliance": "#f07d5f",
+    "nitro": "#ff6bfa",
+    "bravery": "#9c84ef"
+  },
+  "channels": {
+    "logsChannelId": "1407933678230700162",
+    "solicitacoesdpChannelId": "1407933678406995979",
+    "bopmChannelId": "1407933678406995979",
+    "suggestionsChannelId": "1442614177494470757"
+  },
+  "suggestions": {
+    "0": {
+      "messageId": "a",
+      "userId": "b"
     }
+  },
+  "bopm": {
+    "bopmatual": "1039"
+  }
 }
