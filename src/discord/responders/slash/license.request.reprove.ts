@@ -1,6 +1,7 @@
 import { createResponder, ResponderType } from "#base";
 import { db } from "../../../database/firestore.js";
 import { icon } from "../../../functions/utils/emojis.js";
+import { licenseReprovedContainer } from "../../containers/commands/slash/public/license.reproved.js";
 import { licenseRequestReproveContainer } from "../../containers/commands/slash/public/license.request.reprove.js";
 
 createResponder({
@@ -46,7 +47,8 @@ createResponder({
 
         try {
             await solicitante.send({
-                content: `${icon.action_x} Sua solicitação foi reprovada pela Diretoria de Pessoal.`
+                flags: ["IsComponentsV2"],
+                components: [await licenseReprovedContainer(interaction.member, solicitante, data.motivo, data.tempo, data.observacoes)]
             })
         } catch (error) {
             console.error(`Erro ao enviar uma mensangem na DM de ${solicitante.user.username}:`, error);

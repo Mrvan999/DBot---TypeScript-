@@ -7,7 +7,7 @@ export async function licenseRequestReproveContainer(memberDp: GuildMember, memb
         components: [
             createSection(
                 brBuilder(
-                    `${icon.calendar_x} Licença Reprovada`,
+                    `${icon.clock_x} Licença Reprovada`,
                     `${icon.clock} ${time(new Date(), TimestampStyles.LongDateShortTime)}`,
                     `${icon.user} ${member.user} (${member.id})`,
                     `${icon.arrow_right} <@&${dbroles.dp_roles.ouvidoriadpRoleId}>`

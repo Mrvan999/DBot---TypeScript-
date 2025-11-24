@@ -2,15 +2,14 @@ import { brBuilder, createContainer, createSection, createTextDisplay, Separator
 import { GuildMember, time, TimestampStyles } from "discord.js";
 import { icon } from "../../../../../functions/utils/emojis.js";
 
-export async function licenseRequestApproveContainer(memberDp: GuildMember, member: GuildMember, motivo: string, tempo: string, observacoes: string) {
+export async function licenseReprovedContainer(memberDp: GuildMember, member: GuildMember, motivo: string, tempo: string, observacoes: string) {
     return createContainer({
         components: [
             createSection(
                 brBuilder(
-                    `${icon.clock_check} Licença Aprovada`,
+                    `${icon.clock_x} Licença Reprovada`,
                     `${icon.clock} ${time(new Date(), TimestampStyles.LongDateShortTime)}`,
-                    `${icon.user} ${member.user} (${member.id})`,
-                    `${icon.arrow_right} <@&${dbroles.dp_roles.ouvidoriadpRoleId}>`
+                    `${icon.user} ${member.user} (${member.id})`
                 ),
                 {
                     media: {
@@ -43,7 +42,7 @@ export async function licenseRequestApproveContainer(memberDp: GuildMember, memb
             Separator.LargeHidden,
             createTextDisplay(
                 brBuilder(
-                    `-# Solicitação aprovada por ${memberDp.user} | ${time(new Date(), TimestampStyles.LongDateShortTime)}`
+                    `-# Solicitação reprovada por ${memberDp.user} | ${time(new Date(), TimestampStyles.LongDateShortTime)}`
                 )
             )
         ]

@@ -7,7 +7,7 @@ export async function licenseRemoveContainer(member: GuildMember) {
         components: [
             createSection(
                 brBuilder(
-                    `${icon.calendar_remove}  Licença Encerrada`,
+                    `${icon.clock_remove}  Licença Encerrada`,
                     `${icon.clock} ${time(new Date(), TimestampStyles.LongDateShortTime)}`,
                     `${icon.user} ${member.user} (${member.id})`,
                     `${icon.arrow_right} <@&${dbroles.dp_roles.ouvidoriadpRoleId}>`

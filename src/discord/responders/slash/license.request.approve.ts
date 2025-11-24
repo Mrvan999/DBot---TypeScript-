@@ -1,6 +1,7 @@
 import { createResponder, ResponderType } from "#base";
 import { db } from "../../../database/firestore.js";
 import { icon } from "../../../functions/utils/emojis.js";
+import { licenseApprovedContainer } from "../../containers/commands/slash/public/license.approved.js";
 import { licenseRequestApproveContainer } from "../../containers/commands/slash/public/license.request.approve.js";
 
 createResponder({
@@ -50,7 +51,8 @@ createResponder({
 
         try {
             await solicitante.send({
-                content: `${icon.action_check} Sua solicitação foi aprovada pela Diretoria de Pessoal.`
+                flags: ["IsComponentsV2"],
+                components: [await licenseApprovedContainer(interaction.member, solicitante, data.motivo, data.tempo, data.observacoes)]
             })
         } catch (error) {
             console.error(`Erro ao enviar uma mensangem na DM de ${solicitante.user.username}:`, error);

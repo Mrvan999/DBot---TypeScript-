@@ -7,7 +7,7 @@ export async function licenseRequestContainer(member: GuildMember, motivo: strin
         components: [
             createSection(
                 brBuilder(
-                    `${icon.calendar_add}  Solicitação de Licença`,
+                    `${icon.clock_add}  Solicitação de Licença`,
                     `${icon.clock} ${time(new Date(), TimestampStyles.LongDateShortTime)}`,
                     `${icon.user} ${member.user} (${member.id})`,
                     `${icon.arrow_right} <@&${dbroles.dp_roles.ouvidoriadpRoleId}>`
