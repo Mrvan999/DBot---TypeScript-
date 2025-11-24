@@ -11,7 +11,7 @@ export async function licenseRequestContainer(member: GuildMember, motivo: strin
                     `${icon.calendar_add}  Solicitação de Licença`,
                     `${icon.clock} ${time(new Date(), TimestampStyles.LongDateShortTime)}`,
                     `${icon.user} ${member.user} (${member.id})`,
-                    `${icon.arrow_right} <@${await getOuvidoriaDPRoleId}>`
+                    `${icon.arrow_right} <@&${await getOuvidoriaDPRoleId()}>`
                 ),
                 {
                     media: {

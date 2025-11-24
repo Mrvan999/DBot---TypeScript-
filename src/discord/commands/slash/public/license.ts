@@ -5,6 +5,7 @@ import { getAusenteRoleId } from "../../../../functions/utils/dbrolesget.js";
 import { icon } from "../../../../functions/utils/emojis.js";
 import { createLicenseRequest } from "../../../../functions/utils/license/createLicenseRequest.js";
 import { licenseRequestContainer } from "../../../containers/commands/slash/public/license.request.js";
+import { licenseRemoveContainer } from "../../../containers/commands/slash/public/license.remove.js";
 
 createCommand({
     name: "gerenciar",
@@ -110,6 +111,11 @@ createCommand({
             await docRef.delete()
 
             await interaction.member.roles.remove(await getAusenteRoleId());
+
+            await solicitacoesdpChannel.send({
+                flags: ["IsComponentsV2"],
+                components: [await licenseRemoveContainer(interaction.member)]
+            });
 
             await interaction.reply({
                 flags: ["Ephemeral"],
