@@ -20,7 +20,8 @@
     "mysql": "Database",
     "quickdb": "Json",
     "responders": "Meta",
-    "procedures": "CI"
+    "procedures": "CI",
+    "buttons": "interface"
   },
   "material-icon-theme.files.associations": {
     "firebase.development.json": "Firebase",

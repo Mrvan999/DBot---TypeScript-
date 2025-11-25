@@ -44,8 +44,8 @@ createCommand({
 
         const constantsData = JSON.parse(await fs.readFile("constants.json", "utf-8"));
 
-        if (!constantsData.bopm || !constantsData.bopm.bopmatual) {
-            constantsData.bopm = { bopmatual: "1" };
+        if (!constantsData.ouvidoriaDp || !constantsData.ouvidoriaDp.alteracaoatual) {
+            constantsData.ouvidoriaDp = { alteracaoatual: "1" };
         }
 
         let alteracaoNumero = parseInt(constantsData.ouvidoriaDp.alteracaoatual);
@@ -60,9 +60,9 @@ createCommand({
 
         messagemd = messagemd
             .replace(/\$\{numero\}/g, String(alteracaoNumero))
-            .replace(/\$\{numeroticket\}/g, String(ticket))
-            .replace(/\$\{alteracao\}/g, String(alteracao))
-            .replace(/\$\{responsavel\}/g, String(responsavel))
+            .replace(/\$\{numeroticket\}/g, ticket)
+            .replace(/\$\{alteracao\}/g, alteracao)
+            .replace(/\$\{responsavel\}/g, responsavel)
             .replace(/\$\{interaction\.user\}/g, `<@${interaction.user.id}>`);
 
         await alteracoesouvidoriaChannel.send({
