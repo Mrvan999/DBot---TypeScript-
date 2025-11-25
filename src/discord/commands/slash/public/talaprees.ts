@@ -81,7 +81,7 @@ createCommand({
         const talapreesChannel = await interaction.guild.channels.fetch(constants.channels.talapreesChannelId);
         if (!talapreesChannel?.isTextBased()) return;
 
-        let messagemd = await fs.readFile('src/discord/messages/talapreensao/talaprees.base.md', 'utf-8');
+        let messagemd = await fs.readFile('src/discord/messages/talaprees.base.md', 'utf-8');
 
         messagemd = messagemd
             .replace(/\$\{nbopm\}/g, String(nbopm))

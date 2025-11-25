@@ -108,7 +108,7 @@ createCommand({
         const bopmChannel = await interaction.guild.channels.fetch(constants.channels.bopmChannelId);
         if (!bopmChannel?.isTextBased()) return;
 
-        let messagemd = await fs.readFile('src/discord/messages/bopm/bopm.base.md', 'utf-8');
+        let messagemd = await fs.readFile('src/discord/messages/bopm.base.md', 'utf-8');
 
         messagemd = messagemd
             .replace(/\$\{nbopm\}/g, String(nbopm))

@@ -1,6 +1,7 @@
 import { createEvent } from "#base";
-import { addSuggestion, updateSuggestionMessageId } from "../../../../functions/utils/suggestions/suggestionsManager.js";
-import { createSuggestionContainer } from "../../../containers/events/suggetions.create.js";
+import { addSuggestion, updateSuggestionMessageId } from "../../../functions/utils/suggestionsManager.js";
+import { createSuggestionContainer } from "../../containers/events/suggetions.create.js";
+
 
 createEvent({
     name: "suggestions",

@@ -1,10 +1,10 @@
 import { createCommand } from "#base";
 import { ApplicationCommandOptionType, ApplicationCommandType } from "discord.js";
 import { db } from "../../../../database/firestore.js";
+import { createLicenseRequest } from "../../../../functions/utils/createLicenseRequest.js";
 import { icon } from "../../../../functions/utils/emojis.js";
-import { createLicenseRequest } from "../../../../functions/utils/license/createLicenseRequest.js";
-import { licenseRequestContainer } from "../../../containers/commands/slash/public/license.request.js";
 import { licenseRemoveContainer } from "../../../containers/commands/slash/public/license.remove.js";
+import { licenseRequestContainer } from "../../../containers/commands/slash/public/license.request.js";
 
 createCommand({
     name: "gerenciar",
