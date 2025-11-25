@@ -1,9 +1,10 @@
 import { createCommand } from "#base";
 import { ApplicationCommandOptionType, ApplicationCommandType } from "discord.js";
 import { promises as fs } from "fs";
+import { db } from "../../../../database/firestore.js";
+import { createUniformRequest } from "../../../../functions/utils/createUniformRequest.js";
 import { icon } from "../../../../functions/utils/emojis.js";
 import { uniformRequestButtons } from "../../../buttons/commands/slash/public/solicitacaofardamento.request.js";
-import { createUniformRequest } from "../../../../functions/utils/createUniformRequest.js";
 
 createCommand({
     name: "solicitar",
@@ -106,6 +107,17 @@ createCommand({
 
         const solicitacaofardamentoChannel = await interaction.guild.channels.fetch(constants.channels.solicitacaofardamentoChannelId);
         if (!solicitacaofardamentoChannel?.isTextBased()) return;
+
+        const docRef = db.collection("uniforms").doc(interaction.user.id);
+        const doc = await docRef.get();
+
+        if (doc.exists) {
+            await interaction.reply({
+                flags: ["Ephemeral"],
+                content: `${icon.action_x} Você não pode possuir mais de uma solicitação simultanêa, caso ache que isto é um erro, contate a equipe da DTIC.`
+            })
+            return;
+        }
 
         let messagemd = await fs.readFile('src/discord/messages/solicitacaofardamento.base.md', 'utf-8');
 
