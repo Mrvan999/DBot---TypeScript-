@@ -5,16 +5,111 @@ import { cautelaCreateContainer } from "../../../containers/commands/slash/publi
 import { createCautelaDocument } from "../../../../functions/utils/createCautelaDocument.js";
 
 
-const prefixoInfo: Record<string, { modelo: string; opm: string; call: number }> = {
+const prefixoInfo: Record<string, { modelo: string; opm: string; call: string }> = {
+    "CPAM10-001": {
+        modelo: "Trailblazer 2023",
+        opm: "CPAM-10",
+        call: "1412175946873835520"
+    },
     "M-22000": {
-        modelo: "Caminhonete L200 Triton",
-        opm: "4º BPM",
-        call: 1407933678230700158
+        modelo: "Trailblazer 2023",
+        opm: "22º BPM/M",
+        call: "1392311391649661029"
+    },
+    "M-22003": {
+        modelo: "Trailblazer 2023",
+        opm: "22º BPM/M",
+        call: "1412176114947854426"
+    },
+    "M-22005 CFP": {
+        modelo: "Trailblazer 2023",
+        opm: "22º BPM/M",
+        call: "1136060081511874671"
     },
     "M-22100": {
-        modelo: "Renault Duster",
-        opm: "Polícia Civil",
-        call: 1407933678230700157
+        modelo: "Trailblazer 2023",
+        opm: "22º BPM/M - 1ª Cia",
+        call: "1238274422776008714"
+    },
+    "M-22102": {
+        modelo: "Spin 2023",
+        opm: "22º BPM/M - 1ª Cia",
+        call: "1238274422776008714"
+    },
+    "M-22103": {
+        modelo: "Spin 2023",
+        opm: "22º BPM/M - 1ª Cia",
+        call: "1136061487945887754"
+    },
+    "M-22104": {
+        modelo: "Spin 2023",
+        opm: "22º BPM/M - 1ª Cia",
+        call: "1136061538046836766"
+    },
+    "M-22105": {
+        modelo: "Spin 2023",
+        opm: "22º BPM/M - 1ª Cia",
+        call: "1369463199606247495"
+    },
+    "M-22106": {
+        modelo: "Spin 2023",
+        opm: "22º BPM/M - 1ª Cia",
+        call: "1136387344275099719"
+    },
+    "M-22107": {
+        modelo: "Spin 2023",
+        opm: "22º BPM/M - 1ª Cia",
+        call: "1299827039922294848"
+    },
+    "M-22108": {
+        modelo: "Spin 2023",
+        opm: "22º BPM/M - 1ª Cia",
+        call: "1226616811471110174"
+    },
+    "M-22109": {
+        modelo: "Spin 2023",
+        opm: "22º BPM/M - 1ª Cia",
+        call: "1379549071244787723"
+    },
+    "M-22190 Base": {
+        modelo: "Sprinter 2024",
+        opm: "22º BPM/M - 1ª Cia",
+        call: "1379549071244787723"
+    },
+    "15-87 POE": {
+        modelo: "Spin 2023",
+        opm: "22º BPM/M",
+        call: "1153070830981500970"
+    },
+    "M-22014 FT": {
+        modelo: "Trailblazer 2023",
+        opm: "22º BPM/M - Cia FT",
+        call: "1136387312016699522"
+    },
+    "M-22010 FT CMD": {
+        modelo: "Trailblazer 2023",
+        opm: "22º BPM/M - Cia FT",
+        call: "1136063728018796574"
+    },
+    "M-22015 FT CMD": {
+        modelo: "Trailblazer 2023",
+        opm: "22º BPM/M - Cia FT",
+        call: "1266559186108678145"
+    },
+    "M-22019 FT": {
+        modelo: "Trailblazer 2023",
+        opm: "22º BPM/M - Cia FT",
+        call: "1270535843844460718"
+    },
+    "RPM": {
+        modelo: "Honda XRE 300",
+        opm: "22º BPM/M - 1ª Cia",
+        call: "1328091910279266495"
+    },
+    "ROCAM": {
+        modelo: "Triumph Tiger 800 XCx",
+        opm: "22º BPM/M - Cia FT",
+        call: "1328091933410857175"
     }
 };
 
@@ -73,10 +168,10 @@ createCommand({
 
         await cautelaChannel.send({
             flags: ["IsComponentsV2"],
-            components: [cautelaCreateContainer(interaction.member, militares, info.opm, info.modelo, prefixo, motivo, dataHoraDiscord)]
+            components: [cautelaCreateContainer(interaction.member, militares, info.opm, info.modelo, prefixo, info.call, motivo, dataHoraDiscord)]
         })
 
-        await createCautelaDocument(interaction.member.id, militares, info.opm, info.modelo, prefixo, motivo, dataHoraDiscord)
+        await createCautelaDocument(interaction.member.id, militares, info.opm, info.modelo, prefixo, info.call, motivo, dataHoraDiscord)
 
         await interaction.reply({
             flags: ["Ephemeral"],
@@ -94,6 +189,18 @@ createCommand({
             return interaction.respond(
                 sugestões.map(s => ({ name: s, value: s }))
             );
-        }
+        } else if (focused.name === "motivo") {
+            const sugestões = [
+                "Patrulhamento",
+                "Supervisão de área",
+                "Supervisão regional",
+                "Serviço administrativo",
+                "Transporte de pessoal"
+            ].filter(s => s.toLowerCase().includes(focused.value.toLowerCase()));
+
+            return interaction.respond(
+                sugestões.map(s => ({ name: s, value: s }))
+            );
+        } 
     }
 });
