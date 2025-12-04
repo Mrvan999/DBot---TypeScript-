@@ -21,8 +21,8 @@ createEvent({
             components: [container]
         });
 
-        await mymessage.react(`<:action_check:1442162013550805123>`);
-        await mymessage.react(`<:action_x:1442162024174981371>`);
+        await mymessage.react(`<:action_check:1442619110138843258>`);
+        await mymessage.react(`<:action_x:1442619115779920025>`);
         await mymessage.startThread({
             name: `Sugestão Nº${suggestionNumber} - Discussão`,
             autoArchiveDuration: 1440,

@@ -31,6 +31,9 @@ export async function createDiscordName(memberId: string, guild: Guild): Promise
         if (!match) continue;
 
         const number = parseInt(match[1]);
+
+        if (number === 190 || number === 193) continue;
+
         if (!isNaN(number) && number > highestXX) {
             highestXX = number;
         }
