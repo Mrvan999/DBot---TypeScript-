@@ -44,7 +44,7 @@ export function ouvidoriaSendContainer() {
                 max_values: 1,
                 type: ComponentType.StringSelect,
                 options: [
-                    { label: "Ouvidoria - Diretoria de Pessoal", value: "ouvidoriadp", emoji: icon.DP },
+                    { label: "Ouvidoria - Diretoria de Pessoal", value: "ouvidoriadp", emoji: icon.dp },
                     { label: "Ouvidoria - Corregedoria", value: "ouvidoriacorreg", emoji: icon.correg },
                     { label: "Ouvidoria - Estado Maior", value: "ouvidoriaempm", emoji: icon.empm },
                 ],
