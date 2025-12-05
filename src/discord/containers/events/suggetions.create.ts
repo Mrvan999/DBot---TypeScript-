@@ -1,13 +1,13 @@
 import { brBuilder, createContainer, createSection, createTextDisplay, Separator } from "@magicyan/discord";
 import { icon } from "../../../functions/utils/emojis.js";
 
-export function createSuggestionContainer(message: any, suggestionNumber: number) {
+export function createSuggestionContainer(message: any, suggestionNumber: string) {
     return createContainer({
         components: [
             createSection(
                 brBuilder(
                     `## ${icon.clipboard_remove}  Sugestão Nº${suggestionNumber} - Revisão`,
-                    `-# ${icon.user}  Sugestão de ${message.author}`
+                    `-# Sugestão de ${message.author}`
                 ),
                 {
                     media: {

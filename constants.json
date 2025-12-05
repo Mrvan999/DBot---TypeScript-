@@ -30,14 +30,7 @@
         "cautelaChannelId": "1443269372188692521"
     },
     "suggestions": {
-        "0": {
-            "messageId": "a",
-            "userId": "b"
-        },
-        "1": {
-            "messageId": "https://discord.com/channels/1407933677312151602/1442614177494470757/1443986124702748714",
-            "userId": "963451712595710042"
-        }
+        "suggestionsnumber": "7"
     },
     "bopm": {
         "bopmatual": "0"
