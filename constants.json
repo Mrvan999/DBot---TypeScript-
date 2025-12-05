@@ -1,70 +1,46 @@
 {
-  "colors": {
-    "default": "#2B2D31",
-    "primary": "#3b82f6",
-    "secondary": "#4f545c",
-    "success": "#22c55e",
-    "danger": "#ED4245",
-    "warning": "#fbbd23",
-    "azoxo": "#5865F2",
-    "green": "#57F287",
-    "yellow": "#FEE75C",
-    "fuchsia": "#EB459E",
-    "magic": "#c026d3",
-    "developer": "#3e70dd",
-    "balance": "#45ddc0",
-    "brilliance": "#f07d5f",
-    "nitro": "#ff6bfa",
-    "bravery": "#9c84ef"
-  },
-  "channels": {
-    "logsChannelId": "1412176040347959396",
-    "solicitacoesdpChannelId": "1408551821223657472",
-    "bopmChannelId": "952964364233748540",
-    "talapreesChannelId": "1144683816544370688",
-    "alteracoesouvidoriaChannelId": "1295834653126819890",
-    "solicitacaofardamentoChannelId": "1283190881586774099",
-    "registroestatisticoChannelId": "1225938201693257739",
-    "suggestionsChannelId": "952963891116273664",
-    "cautelaChannelId": "1144669252729720992"
-  },
-  "suggestions": {
-    "0": {
-      "messageId": "a",
-      "userId": "b"
+    "colors": {
+        "default": "#2B2D31",
+        "primary": "#3b82f6",
+        "secondary": "#4f545c",
+        "success": "#22c55e",
+        "danger": "#ED4245",
+        "warning": "#fbbd23",
+        "azoxo": "#5865F2",
+        "green": "#57F287",
+        "yellow": "#FEE75C",
+        "fuchsia": "#EB459E",
+        "magic": "#c026d3",
+        "developer": "#3e70dd",
+        "balance": "#45ddc0",
+        "brilliance": "#f07d5f",
+        "nitro": "#ff6bfa",
+        "bravery": "#9c84ef"
     },
     "channels": {
-        "logsChannelId": "1407933678230700162",
-        "solicitacoesdpChannelId": "1407933678406995979",
-        "bopmChannelId": "1442612832481841203",
-        "talapreesChannelId": "1444024016892465365",
-        "alteracoesouvidoriaChannelId": "1407933678406995979",
-        "solicitacaofardamentoChannelId": "1407933678406995979",
-        "registroestatisticoChannelId": "1443985467082280990",
-        "suggestionsChannelId": "1442614177494470757",
-        "ouvidoriaChannelId": "1445960861322838046",
-        "cautelaChannelId": "1443269372188692521"
+        "logsChannelId": "1412176040347959396",
+        "solicitacoesdpChannelId": "1408551821223657472",
+        "bopmChannelId": "952964364233748540",
+        "talapreesChannelId": "1144683816544370688",
+        "alteracoesouvidoriaChannelId": "1295834653126819890",
+        "solicitacaofardamentoChannelId": "1283190881586774099",
+        "registroestatisticoChannelId": "1225938201693257739",
+        "suggestionsChannelId": "952963891116273664",
+        "ouvidoriaChannelId": "1278812231601098793",
+        "cautelaChannelId": "1144669252729720992"
     },
-    "2": {
-      "messageId": "temp",
-      "userId": "1052066238442000444"
+    "suggestions": {
+        "suggestionsnumber": "303"
     },
     "bopm": {
-        "bopmatual": "0"
+        "bopmatual": "1056"
     },
     "ouvidoriaDp": {
-        "alteracaoatual": "0"
+        "alteracaoatual": "17"
     },
     "ouvidoriapmesp": {
-        "ouvidoriadpnumber": "0",
-        "ouvidoriacorregnumber": "0",
+        "ouvidoriadpnumber": "38",
+        "ouvidoriacorregnumber": "58",
         "ouvidoriaemnumber": "0"
     }
-  },
-  "bopm": {
-    "bopmatual": "17"
-  },
-  "ouvidoriaDp": {
-    "alteracaoatual": "16"
-  }
 }
