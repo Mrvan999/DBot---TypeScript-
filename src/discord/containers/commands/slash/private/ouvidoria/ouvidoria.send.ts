@@ -25,7 +25,10 @@ export function ouvidoriaSendContainer() {
                     "> A *Ouvidoria da CORREG PM* é atendida por militares da *Corregedoria da Polícia Militar*, recebendo e analisando denúncias para apuração sobre condutas e procedimentos que não estejam de acordo com os regulamentos da corporação. Deve ser utilizada para abertura de processos e recorrência a processos e sanções anteriores.",
                     "",
                     "### - **:bookmark_tabs:  Ouvidoria da Diretoria de Pessoal**",
-                    "> Canal destinado a receber manifestações sobre gestão de efetivo, como movimentações, promoções, afastamentos, ingresso, frequência, atendimento ao policial e questões funcionais. As demandas são analisadas e encaminhadas às seções competentes da Diretoria de Pessoal, com sigilo e responsabilidade."
+                    "> Canal destinado a receber manifestações sobre gestão de efetivo, como movimentações, promoções, afastamentos, ingresso, frequência, atendimento ao policial e questões funcionais. As demandas são analisadas e encaminhadas às seções competentes da Diretoria de Pessoal, com sigilo e responsabilidade.",
+                    "",
+                    "### - **:guard: Ouvidoria do Estado Maior**",
+                    "> Canal exclusivo para o trâmite de assuntos afetos ao Estado-Maior, incluindo assessoramento ao Comando, análise de cenários, propostas de normatização e coordenação de grandes operações. As solicitações são triadas e despachadas às respectivas seções para as devidas providências técnicas."
                 )
             ),
             Separator.Large,
@@ -41,7 +44,7 @@ export function ouvidoriaSendContainer() {
                 max_values: 1,
                 type: ComponentType.StringSelect,
                 options: [
-                    { label: "Ouvidoria - Diretoria de Pessoal", value: "ouvidoriadp", emoji: icon.dp },
+                    { label: "Ouvidoria - Diretoria de Pessoal", value: "ouvidoriadp", emoji: icon.DP },
                     { label: "Ouvidoria - Corregedoria", value: "ouvidoriacorreg", emoji: icon.correg },
                     { label: "Ouvidoria - Estado Maior", value: "ouvidoriaempm", emoji: icon.empm },
                 ],

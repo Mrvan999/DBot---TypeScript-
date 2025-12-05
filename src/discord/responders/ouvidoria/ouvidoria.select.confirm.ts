@@ -40,7 +40,7 @@ createResponder({
 
         if (interaction.channel && interaction.channel.type === ChannelType.GuildText) {
             const ticketthread = await interaction.channel.threads.create({
-                name: `${interaction.user.username} | ${ouvidoriaResponsavelNumber}`,
+                name: `${interaction.user.username} | ${ouvidoriaResponsavelNumber[0]}-${ouvidoriaResponsavelNumber.slice(1)}`,
                 autoArchiveDuration: 60,
                 invitable: false,
                 type: ChannelType.PrivateThread,
