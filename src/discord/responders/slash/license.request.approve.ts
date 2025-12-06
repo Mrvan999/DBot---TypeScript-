@@ -39,7 +39,7 @@ createResponder({
             return;
         }
 
-        await interaction.member.roles.add(await getAusenteRoleId());
+        await solicitante.roles.add(await getAusenteRoleId());
 
         await docRef.update({
             status: "Licença em andamento"
