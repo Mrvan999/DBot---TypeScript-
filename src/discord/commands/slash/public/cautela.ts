@@ -57,12 +57,12 @@ const prefixoInfo: Record<string, { modelo: string; opm: string; call: string }>
         call: "1136387344275099719"
     },
     "M-22107": {
-        modelo: "Spin 2023",
+        modelo: "Trailblazer 2023",
         opm: "22º BPM/M - 1ª Cia",
         call: "1299827039922294848"
     },
     "M-22108": {
-        modelo: "Spin 2023",
+        modelo: "Corola Cross 2023",
         opm: "22º BPM/M - 1ª Cia",
         call: "1226616811471110174"
     },
