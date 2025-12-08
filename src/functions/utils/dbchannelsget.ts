@@ -15,7 +15,7 @@ export interface ChannelsSchema {
   };
 }
 
-export async function loadRolesFromDB(): Promise<ChannelsSchema> {
+export async function loadChannelsFromDB(): Promise<ChannelsSchema> {
   const snapshot = await db.collection("channels").get();
 
   const result: any = {};
@@ -27,6 +27,6 @@ export async function loadRolesFromDB(): Promise<ChannelsSchema> {
   return result as ChannelsSchema;
 }
 
-export const dbchannels: ChannelsSchema = await loadRolesFromDB();
+export const dbchannels: ChannelsSchema = await loadChannelsFromDB();
 
 globalThis.dbchannels = dbchannels;
