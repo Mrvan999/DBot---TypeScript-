@@ -105,7 +105,7 @@ createCommand({
         const adicionais = interaction.options.getString("adicionais") ?? "Não Há";
         const observacoes = interaction.options.getString("observacoes") ?? "Não Há";
 
-        const solicitacaofardamentoChannel = await interaction.guild.channels.fetch(constants.channels.solicitacaofardamentoChannelId);
+        const solicitacaofardamentoChannel = await interaction.guild.channels.fetch(dbchannels.channels_ids.solicitacaofardamentoChannelId);
         if (!solicitacaofardamentoChannel?.isTextBased()) return;
 
         const docRef = db.collection("uniforms").doc(interaction.user.id);

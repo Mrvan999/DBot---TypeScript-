@@ -9,7 +9,7 @@ createResponder({
     customId: "/ouvidoria/:ouvidoriaResponsavelNumber/select/confirm",
     types: [ResponderType.Button], cache: "cached",
     async run(interaction, { ouvidoriaResponsavelNumber }) {
-        if (interaction.channelId != constants.channels.ouvidoriaChannelId) {
+        if (interaction.channelId != dbchannels.channels_ids.ouvidoriaChannelId) {
             interaction.reply({
                 flags: ["Ephemeral"],
                 content: "Como Você Usou Isso Em Outro Canal, Cara?"

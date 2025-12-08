@@ -163,7 +163,7 @@ createCommand({
             call: "Não informado"
         };
 
-        const cautelaChannel = await interaction.guild.channels.fetch(constants.channels.cautelaChannelId);
+        const cautelaChannel = await interaction.guild.channels.fetch(dbchannels.channels_ids.cautelaChannelId);
         if (!cautelaChannel?.isTextBased()) return;
 
         await cautelaChannel.send({

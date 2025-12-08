@@ -53,7 +53,7 @@ createCommand({
         const tempo = interaction.options.getString("tempo") ?? "Não há";
         const observacoes = interaction.options.getString("observacoes") ?? "Não há";
 
-        const solicitacoesdpChannel = await interaction.guild.channels.fetch(constants.channels.solicitacoesdpChannelId);
+        const solicitacoesdpChannel = await interaction.guild.channels.fetch(dbchannels.channels_ids.solicitacoesdpChannelId);
         if (!solicitacoesdpChannel?.isTextBased()) return;
 
         function parseTempoToDays(input: string | null): number | null {

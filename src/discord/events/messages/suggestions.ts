@@ -9,7 +9,7 @@ createEvent({
     name: "suggestions",
     event: "messageCreate",
     async run(message) {
-        if (message.author.id === message.client.user?.id || message.channelId !== constants.channels.suggestionsChannelId) return;
+        if (message.author.id === message.client.user?.id || message.channelId !== dbchannels.channels_ids.suggestionsChannelId) return;
 
         const suggestionNumber = await suggestionCreateFirestore(message.member?.id!, message.content, "temp")
 

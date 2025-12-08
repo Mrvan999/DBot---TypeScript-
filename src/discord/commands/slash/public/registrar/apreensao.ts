@@ -65,7 +65,7 @@ export default {
         const receptor = interaction.options.getString("receptor")!;
         const foto = interaction.options.getAttachment("foto")!;
 
-        const talapreesChannel = await interaction.guild.channels.fetch(constants.channels.talapreesChannelId);
+        const talapreesChannel = await interaction.guild.channels.fetch(dbchannels.channels_ids.talapreesChannelId);
         if (!talapreesChannel?.isTextBased()) return;
 
         let messagemd = await fs.readFile("src/discord/messages/talaprees.base.md", "utf-8");

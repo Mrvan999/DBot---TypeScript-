@@ -18,7 +18,7 @@ createCommand({
     async run(interaction) {
         if (interaction.options.getSubcommand() !== "enviar") return;
 
-        const registroestatisticoChannel = await interaction.guild.channels.fetch(constants.channels.registroestatisticoChannelId);
+        const registroestatisticoChannel = await interaction.guild.channels.fetch(dbchannels.channels_ids.registroestatisticoChannelId);
         if (!registroestatisticoChannel?.isTextBased()) return;
 
         const filenames = ["BannerPMESP_Registro_Estatistico"];

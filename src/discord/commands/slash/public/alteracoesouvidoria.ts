@@ -70,7 +70,7 @@ createCommand({
             "alteracaoatual": String(alteracaoatual)
         })
 
-        const alteracoesouvidoriaChannel = await interaction.guild.channels.fetch(constants.channels.alteracoesouvidoriaChannelId);
+        const alteracoesouvidoriaChannel = await interaction.guild.channels.fetch(dbchannels.channels_ids.alteracoesouvidoriaChannelId);
         if (!alteracoesouvidoriaChannel?.isTextBased()) return;
 
         let messagemd = await fs.readFile('src/discord/messages/alteracoesouvidoria.base.md', 'utf-8');

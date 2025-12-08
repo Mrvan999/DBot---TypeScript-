@@ -7,7 +7,7 @@ createResponder({
     customId: "registro/modal/pag1",
     types: [ResponderType.ModalComponent], cache: "cached",
     async run(interaction) {
-        const solicitacoesdpChannel = await interaction.guild.channels.fetch(constants.channels.solicitacoesdpChannelId);
+        const solicitacoesdpChannel = await interaction.guild.channels.fetch(dbchannels.channels_ids.solicitacoesdpChannelId);
         if (!solicitacoesdpChannel?.isTextBased()) return;
 
         const fields = interaction.fields;

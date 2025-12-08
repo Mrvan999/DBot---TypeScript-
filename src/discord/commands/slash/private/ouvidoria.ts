@@ -17,7 +17,7 @@ createCommand({
     async run(interaction) {
         if (interaction.options.getSubcommand() !== "ouvidoria") return;
 
-        const suporteChannel = await interaction.guild.channels.fetch(constants.channels.ouvidoriaChannelId);
+        const suporteChannel = await interaction.guild.channels.fetch(dbchannels.channels_ids.ouvidoriaChannelId);
 
         if (!suporteChannel) {
             console.log("Canal Não Encontrado");

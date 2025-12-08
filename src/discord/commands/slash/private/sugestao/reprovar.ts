@@ -27,7 +27,7 @@ export default {
             flags: ["Ephemeral"]
         })
 
-        const suggestionsChannel = await interaction.guild.channels.fetch(constants.channels.suggestionsChannelId);
+        const suggestionsChannel = await interaction.guild.channels.fetch(dbchannels.channels_ids.suggestionsChannelId);
         if (!suggestionsChannel?.isTextBased()) return;
 
         const docRef = db.collection("suggestions").doc(identificador!);

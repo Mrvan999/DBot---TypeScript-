@@ -109,7 +109,7 @@ export default {
             "bopmatual": String(nbopm)
         })
 
-        const bopmChannel = await interaction.guild.channels.fetch(constants.channels.bopmChannelId);
+        const bopmChannel = await interaction.guild.channels.fetch(dbchannels.channels_ids.bopmChannelId);
         if (!bopmChannel?.isTextBased()) return;
 
         let messagemd = await fs.readFile("src/discord/messages/bopm.base.md", "utf-8");
