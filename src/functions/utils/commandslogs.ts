@@ -3,7 +3,7 @@ import { commandPrefixLogContainer } from "../../discord/containers/events/comma
 import { commandSlashLogContainer } from "../../discord/containers/events/command.slash.log.js";
 
 export async function commandPrefixLog(command: Message) {
-    const channellog = await command.guild?.channels.fetch(constants.channels.logsChannelId);
+    const channellog = await command.guild?.channels.fetch(dbchannels.channels_ids.logsChannelId);
     if (!channellog?.isTextBased()) return;
 
     await channellog.send({
@@ -14,7 +14,7 @@ export async function commandPrefixLog(command: Message) {
 }
 
 export async function commandSlashLog(interaction: ChatInputCommandInteraction) {
-    const channellog = await interaction.guild?.channels.fetch(constants.channels.logsChannelId);
+    const channellog = await interaction.guild?.channels.fetch(dbchannels.channels_ids.logsChannelId);
     if (!channellog?.isTextBased()) return;
 
     await channellog.send({
