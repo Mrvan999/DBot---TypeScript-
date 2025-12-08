@@ -29,7 +29,7 @@ createResponder({
             return;
         }
 
-        if (!interaction.member.roles.cache.has(dbroles.dp_roles.diretoriadepessoalRoleId) || data.militares.includes(interaction.member.id) || interaction.member.id === data.memberId) {
+        if (!interaction.member.roles.cache.has(dbroles.dp_roles.diretoriadepessoalRoleId) || !data.militares.includes(interaction.member.id) || interaction.member.id !== data.memberId) {
             await interaction.reply({
                 flags: ["Ephemeral"],
                 content: `${icon.action_x} Você não possui permissão para fechar esta cautela.`
