@@ -122,7 +122,7 @@ export default {
         const focused = interaction.options.getFocused(true);
 
         if (focused.name === "patente") {
-            const sugestões = [
+            const todasSugestoes = [
                 "Coronel PM",
                 "Tenente-Coronel PM",
                 "Major PM",
@@ -149,10 +149,14 @@ export default {
                 "Tático Ostensivo Rodoviário",
                 "Força Tática - 22º BPM/M",
                 "Corregedoria da Polícia Militar"
-            ].filter(s => s.toLowerCase().includes(focused.value.toLowerCase()));
+            ];
+
+            const filtradas = todasSugestoes
+                .filter(s => s.toLowerCase().includes(focused.value.toLowerCase()))
+                .slice(0, 25);
 
             return interaction.respond(
-                sugestões.map(s => ({ name: s, value: s }))
+                filtradas.map(s => ({ name: s, value: s }))
             );
         }
     }
