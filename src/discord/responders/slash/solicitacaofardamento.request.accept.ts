@@ -60,7 +60,7 @@ createResponder({
             .replace(/\$\{laurea\}/g, data.laurea)
             .replace(/\$\{adicionais\}/g, data.adicionais)
             .replace(/\$\{observacoes\}/g, data.observacoes)
-            .replace(/\$\{interaction\.user\}/g, `<@${interaction.user.id}>`)
+            .replace(/\$\{interaction\.user\}/g, `<@${solicitante.user.id}>`)
             .replace(/\$\{statusAtual\}/g, `Em personalização desde: ${time(new Date(), TimestampStyles.LongDateShortTime)} | <@${interaction.user.id}>`);
 
         await interaction.update({

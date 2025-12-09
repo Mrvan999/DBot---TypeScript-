@@ -72,7 +72,8 @@ createCommand({
                     name: "laurea",
                     description: "Informe o grau de sua laurea. (1º Grau, 3º Grau, 5º Grau...)",
                     type: ApplicationCommandOptionType.String,
-                    required: false
+                    required: false,
+                    autocomplete: true
                 },
                 {
                     name: "adicionais",
@@ -231,6 +232,18 @@ createCommand({
                 "Curso de Aperfeiçoamento de Sargentos",
                 "Curso de Formação de Sargentos",
                 "Curso de Formação de Soldados"
+            ].filter(s => s.toLowerCase().includes(focused.value.toLowerCase()));
+
+            return interaction.respond(
+                sugestões.map(s => ({ name: s, value: s }))
+            );
+        } else if (focused.name === "laurea") {
+            const sugestões = [
+                "Láurea de 1º Grau",
+                "Láurea de 2º Grau",
+                "Láurea de 3º Grau",
+                "Láurea de 4º Grau",
+                "Láurea de 5º Grau"
             ].filter(s => s.toLowerCase().includes(focused.value.toLowerCase()));
 
             return interaction.respond(
