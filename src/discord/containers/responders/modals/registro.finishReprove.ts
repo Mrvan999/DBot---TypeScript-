@@ -2,7 +2,7 @@ import { brBuilder, createContainer, createSection, createTextDisplay, Separator
 import { GuildMember, time, TimestampStyles } from "discord.js";
 import { icon } from "../../../../functions/utils/emojis.js";
 
-export function registroFinishContainer(dpmember: GuildMember, member: GuildMember, nome: string, rg: string, patente: string, opm: string) {
+export function registroFinishReproveContainer(dpmember: GuildMember, member: GuildMember, nome: string, rg: string, patente: string, opm: string) {
     return createContainer({
         components: [
             createSection(
@@ -10,7 +10,7 @@ export function registroFinishContainer(dpmember: GuildMember, member: GuildMemb
                     `## ${icon.dp} Registro Estatístico`,
                     `${icon.clock} ${time(new Date(), TimestampStyles.LongDateShortTime)}`,
                     `${icon.user} ${member.user} (${member.id})`,
-                    `${icon.arrow_right} Aprovado por: ${dpmember}`
+                    `${icon.arrow_right} Reprovado por: ${dpmember}`
                 ),
                 {
                     media: {

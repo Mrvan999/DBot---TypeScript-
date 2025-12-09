@@ -1,4 +1,5 @@
 import { createResponder, ResponderType } from "#base";
+import { createDiscordName } from "../../../functions/utils/createDiscordName.js";
 import { createRegistroDocument } from "../../../functions/utils/createRegistroDocument.js";
 import { icon } from "../../../functions/utils/emojis.js";
 import { registroToDPContainer } from "../../containers/responders/modals/registro.todp.js";
@@ -17,17 +18,18 @@ createResponder({
         const [patente] = fields.getStringSelectValues("patente");
         const [opm] = fields.getStringSelectValues("opm");
 
+        await createRegistroDocument(interaction.member.id, name, rg, patente, opm)
+
+        const displayName = await createDiscordName(interaction.member.id, interaction.guild)
         
         await solicitacoesdpChannel.send({
             flags: ["IsComponentsV2"],
-            components: [await registroToDPContainer(interaction.member, interaction.guild, name, rg, patente, opm)]
+            components: [await registroToDPContainer(interaction.member, name, rg, patente, opm, displayName)]
         })
-        
-        await createRegistroDocument(interaction.member.id, name, rg, patente, opm)
 
         await interaction.reply({
             flags: ["Ephemeral"],
-            content: `${icon.action_check} Registro estatístico enviado a Diretoria de Pessoal.`
+            content: `${icon.action_check} Registro estatístico enviado a Diretoria de Pessoal. ${displayName}`
         })
     },
 });
