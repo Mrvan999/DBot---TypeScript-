@@ -3,10 +3,10 @@ import { brBuilder } from "@magicyan/discord";
 import { db } from "../../../database/firestore.js";
 import { createDiscordName } from "../../../functions/utils/createDiscordName.js";
 import { icon } from "../../../functions/utils/emojis.js";
-import { registroFinishApproveContainer } from "../../containers/responders/modals/registro.finishApprove.js";
+import { registroFinishReproveContainer } from "../../containers/responders/modals/registro.finishReprove.js";
 
 createResponder({
-    customId: "registro/modal/finish/approve/:memberId",
+    customId: "registro/modal/finish/reprove/:memberId",
     types: [ResponderType.Button],
     cache: "cached",
     async run(interaction, { memberId }) {
@@ -51,27 +51,20 @@ createResponder({
 
         const newNickname = await createDiscordName(target.id, guild)
 
-        try {
-            await target.setNickname(newNickname);
-        } catch (err) {
-            await interaction.reply({
-                flags: ["Ephemeral"],
-                content: `${icon.action_x} Não consegui alterar o apelido do membro (permissões insuficientes).`
-            })
-            return
-        }
-
         await target.send({
             content: brBuilder(
-                "Olá, seu registro estatístico foi aprovado pela Diretoria de Pessoal.",
+                "Olá, seu registro estatístico foi reprovado pela Diretoria de Pessoal.",
                 `Callsing: ${newNickname.slice(0, 2)}`,
                 `Personagem: ${data.nome} (${data.rg})`,
-                `Apelido Servidor: ${newNickname}`
+                `Apelido Servidor: ${newNickname}`,
+                "-# Você pode tentar novamente, um de nossos integrantes entrará em contato."
             )
         })
 
+        await docRef.delete()
+
         await interaction.update({
-            components: [registroFinishApproveContainer(interaction.member, target, data.nome, data.rg, data.patente, data.opm)]
+            components: [registroFinishReproveContainer(interaction.member, target, data.nome, data.rg, data.patente, data.opm)]
         });
     },
 });
