@@ -1,6 +1,6 @@
 import { ChatInputCommandInteraction, Message } from "discord.js";
-import { commandPrefixLogContainer } from "../../discord/containers/events/command.prefix.log.js";
-import { commandSlashLogContainer } from "../../discord/containers/events/command.slash.log.js";
+import { commandPrefixLogContainer } from "../../discord/containers/logs/commands/prefix.js";
+import { commandSlashLogContainer } from "../../discord/containers/logs/commands/slash.js";
 
 export async function commandPrefixLog(command: Message) {
     const channellog = await command.guild?.channels.fetch(dbchannels.channels_ids.logsChannelId);
