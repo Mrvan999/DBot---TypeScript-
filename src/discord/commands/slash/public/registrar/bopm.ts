@@ -115,6 +115,7 @@ export default {
         let messagemd = await fs.readFile("src/discord/messages/bopm.base.md", "utf-8");
 
         messagemd = messagemd
+            .replace(/\$\{emoji\}/g, icon.pmesp.toString())
             .replace(/\$\{nbopm\}/g, String(nbopm))
             .replace(/\$\{militares\}/g, militares)
             .replace(/\$\{data\}/g, time(new Date(), TimestampStyles.LongDateShortTime))

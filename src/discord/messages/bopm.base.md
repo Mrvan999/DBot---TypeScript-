@@ -1,4 +1,4 @@
-# <:pmesp:1442581048650104872> BOLETIM DE OCORRÊNCIA
+# ${emoji} BOLETIM DE OCORRÊNCIA
 
 *BO nº:* ${nbopm}
 *Militares:* ${militares}

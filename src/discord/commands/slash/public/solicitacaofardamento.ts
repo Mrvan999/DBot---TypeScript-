@@ -123,6 +123,7 @@ createCommand({
         let messagemd = await fs.readFile('src/discord/messages/solicitacaofardamento.base.md', 'utf-8');
 
         messagemd = messagemd
+            .replace(/\$\{emoji\}/g, icon.dl.toString())
             .replace(/\$\{mencaoDL\}/g, `<@&${dbroles.dl_roles.diretoriadelogisticaRoleId}>`)
             .replace(/\$\{nomeCompletoSolicitante\}/g, nomesolicitante)
             .replace(/\$\{patente\}/g, patente)

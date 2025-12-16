@@ -1,4 +1,4 @@
-## ALTERAÇÃO OUVIDORIA N° ${numero} - Ticket ${numeroticket} <:dp:1442674698038280312>
+## ALTERAÇÃO OUVIDORIA N° ${numero} - Ticket ${numeroticket} ${emoji}
 ${alteracao}
 
 -# Responsável: ${responsavel}

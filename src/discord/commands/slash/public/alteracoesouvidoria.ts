@@ -77,6 +77,7 @@ createCommand({
 
         messagemd = messagemd
             .replace(/\$\{numero\}/g, String(alteracaoatual))
+            .replace(/\$\{emoji\}/g, icon.dp.toString())
             .replace(/\$\{numeroticket\}/g, ticket)
             .replace(/\$\{alteracao\}/g, alteracao)
             .replace(/\$\{responsavel\}/g, responsavel)

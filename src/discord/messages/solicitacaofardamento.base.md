@@ -1,4 +1,4 @@
-## Solicitação de Fardamento Personalizado <:dl:1442880716185800868>
+## Solicitação de Fardamento Personalizado ${emoji}
 -# ${mencaoDL}
 
 - *Nome completo:* ${nomeCompletoSolicitante}
