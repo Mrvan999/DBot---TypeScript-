@@ -7,7 +7,7 @@ createEvent({
     name: "botinfoPrefixCommand",
     event: "messageCreate",
     async run(message) {
-        if (!message.content.startsWith("!botinfo")) return;
+        if (!message.content.startsWith("?botinfo")) return;
 
         await commandPrefixLog(message);
 
@@ -52,12 +52,12 @@ createEvent({
         if (arg === "--help") {
             await message.channel.send({
                 content: brBuilder(
-                    "**Comandos disponíveis:**",
+                    `${icon.other_terminal} **Comandos do ?botinfo**:`,
                     "",
-                    "`!botinfo`               → Veja a descrição do bot",
-                    "`!botinfo --version`     → Veja a versão atual do bot",
-                    "`!botinfo --devs`        → Veja os desenvolvedores",
-                    "`!botinfo --base`        → Veja a base do bot"
+                    "`?botinfo`               → Veja a descrição do bot",
+                    "`?botinfo --version`     → Veja a versão atual do bot",
+                    "`?botinfo --devs`        → Veja os desenvolvedores",
+                    "`?botinfo --base`        → Veja a base do bot"
                 )
             });
             return;

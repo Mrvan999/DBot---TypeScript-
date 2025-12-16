@@ -1,6 +1,7 @@
 import { ApplicationCommandOptionType, AutocompleteInteraction, ChatInputCommandInteraction } from "discord.js";
 import { icon } from "../../../../../functions/utils/emojis.js";
 import { avaliarOPMContainer } from "../../../../containers/commands/slash/public/avaliar/avaliar.opm.js";
+import { avaliarOPMShowNameContainer } from "../../../../containers/commands/slash/public/avaliar/avaliar.opm.showName.js";
 
 export default {
     options: [
@@ -44,9 +45,17 @@ export default {
         const avaliacaoChannel = await interaction.guild.channels.fetch(dbchannels.channels_ids.avaliacaoChannelId);
         if (!avaliacaoChannel?.isTextBased()) return;
 
+        const avaliacaoShowNameChannel = await interaction.guild.channels.fetch(dbchannels.channels_ids.avaliacaoShowNameChannelId);
+        if (!avaliacaoShowNameChannel?.isTextBased()) return;
+
         await avaliacaoChannel.send({
             flags: ["IsComponentsV2"],
             components: [avaliarOPMContainer(opm, estrelasFormat, avaliacao)]
+        });
+
+        await avaliacaoShowNameChannel.send({
+            flags: ["IsComponentsV2"],
+            components: [avaliarOPMShowNameContainer(opm, interaction.member, estrelasFormat, avaliacao)]
         });
 
         await interaction.reply({

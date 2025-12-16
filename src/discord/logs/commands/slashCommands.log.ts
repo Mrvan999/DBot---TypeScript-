@@ -7,6 +7,8 @@ createEvent({
     async run(interaction) {
         if (!interaction.isChatInputCommand()) return;
 
+        if (interaction.command?.name === "avaliar") return;
+
         await commandSlashLog(interaction);
     }
 });

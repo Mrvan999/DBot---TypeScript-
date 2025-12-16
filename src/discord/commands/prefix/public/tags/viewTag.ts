@@ -8,8 +8,8 @@ createEvent({
     name: "viewTagPrefixCommand",
     event: "messageCreate",
     async run(message) {
-        if (!message.content.startsWith("!tag")) return;
-        if (message.content.startsWith("!tags")) return;
+        if (!message.content.startsWith("?tag")) return;
+        if (message.content.startsWith("?tags")) return;
 
         await commandPrefixLog(message);
 
@@ -19,10 +19,10 @@ createEvent({
         if (tag === "--help") {
             await message.channel.send({
                 content: brBuilder(
-                    `${icon.other_terminal} **Comandos do !tag**:`,
+                    `${icon.other_terminal} **Comandos do ?tag**:`,
                     "",
-                    "\`!tag <nome>\` → Mostra a mensagem da tag especificada.",
-                    "\`!tag --help\` → Mostra esta ajuda."
+                    "\`?tag <nome>\` → Mostra a mensagem da tag especificada.",
+                    "\`?tag --help\` → Mostra esta ajuda."
                 )
             });
             return;

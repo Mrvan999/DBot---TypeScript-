@@ -71,6 +71,7 @@ export default {
         let messagemd = await fs.readFile("src/discord/messages/talaprees.base.md", "utf-8");
 
         messagemd = messagemd
+            .replace(/\$\{emoji\}/g, icon.pmesp.toString())
             .replace(/\$\{nbopm\}/g, nbopm)
             .replace(/\$\{objeto\}/g, objeto)
             .replace(/\$\{quantidade\}/g, quantidade)
