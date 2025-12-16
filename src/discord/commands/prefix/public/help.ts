@@ -5,31 +5,31 @@ import { icon } from "../../../../functions/utils/emojis.js";
 
 const commandsList = [
     {
-        command: "!help",
+        command: "?help",
         description: "Mostra esta mensagem de ajuda."
     },
     {
-        command: "!botinfo",
+        command: "?botinfo",
         description: "Mostra informações sobre o bot e seus desenvolvedores."
     },
     {
-        command: "!uptime",
+        command: "?uptime",
         description: "Mostra há quanto tempo o bot está online."
     },
     {
-        command: "!tag",
+        command: "?tag",
         description: "Exibe uma mensagem salva no banco de dados."
     },
     {
-        command: "!tags",
+        command: "?tags",
         description: "Exibe uma lista com todas as tags salvas no banco de dados."
     },
     {
-        command: "!createtag",
+        command: "?createtag",
         description: "Salva uma mensagem no banco de dados."
     },
     {
-        command: "!deletetag",
+        command: "?deletetag",
         description: "Deleta uma mensagem no banco de dados."
     }
 ];
@@ -38,7 +38,7 @@ createEvent({
     name: "helpPrefixCommand",
     event: "messageCreate",
     async run(message) {
-        if (!message.content.startsWith("!help")) return;
+        if (!message.content.startsWith("?help")) return;
 
         await commandPrefixLog(message);
 

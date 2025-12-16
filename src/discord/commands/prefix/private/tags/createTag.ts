@@ -8,7 +8,7 @@ createEvent({
     name: "createTagPrefixCommand",
     event: "messageCreate",
     async run(message) {
-        if (!message.content.startsWith("!createtag")) return;
+        if (!message.content.startsWith("?createtag")) return;
 
         await commandPrefixLog(message);
 
@@ -22,7 +22,7 @@ createEvent({
         }
 
         const content = message.content.trim();
-        const withoutCommand = content.slice("!createtag".length).trim();
+        const withoutCommand = content.slice("?createtag".length).trim();
 
         if (!withoutCommand) {
             await message.channel.send({
@@ -36,10 +36,10 @@ createEvent({
         if (tagName === "--help") {
             await message.channel.send({
                 content: brBuilder(
-                    `${icon.other_terminal} **Comandos do !createtag**:`,
+                    `${icon.other_terminal} **Comandos do ?createtag**:`,
                     "",
-                    "\`!createtag <nome> <mensagem>\` → Cria uma nova tag com o nome e mensagem especificados.",
-                    "\`!createtag --help\` → Mostra esta ajuda."
+                    "\`?createtag <nome> <mensagem>\` → Cria uma nova tag com o nome e mensagem especificados.",
+                    "\`?createtag --help\` → Mostra esta ajuda."
                 )
             });
             return;

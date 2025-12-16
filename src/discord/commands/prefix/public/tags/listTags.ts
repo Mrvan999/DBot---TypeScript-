@@ -8,7 +8,7 @@ createEvent({
     name: "listTagsPrefixCommand",
     event: "messageCreate",
     async run(message) {
-        if (!message.content.startsWith("!tags")) return;
+        if (!message.content.startsWith("?tags")) return;
 
         await commandPrefixLog(message);
 
@@ -18,10 +18,10 @@ createEvent({
         if (arg === "--help") {
             await message.channel.send({
                 content: brBuilder(
-                    `${icon.other_terminal} **Comandos do !tags**:`,
+                    `${icon.other_terminal} **Comandos do ?tags**:`,
                     "",
-                    "`!tags` → Lista todas as tags disponíveis.",
-                    "`!tags --help` → Mostra esta ajuda."
+                    "`?tags` → Lista todas as tags disponíveis.",
+                    "`?tags --help` → Mostra esta ajuda."
                 )
             });
             return;

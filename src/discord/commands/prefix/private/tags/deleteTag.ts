@@ -8,7 +8,7 @@ createEvent({
     name: "deleteTagPrefixCommand",
     event: "messageCreate",
     async run(message) {
-        if (!message.content.startsWith("!deletetag")) return;
+        if (!message.content.startsWith("?deletetag")) return;
 
         await commandPrefixLog(message);
 
@@ -27,10 +27,10 @@ createEvent({
         if (tag === "--help") {
             await message.channel.send({
                 content: brBuilder(
-                    `${icon.other_terminal} **Comandos do !deletetag**:`,
+                    `${icon.other_terminal} **Comandos do ?deletetag**:`,
                     "",
-                    "\`!deletetag <nome>\` → Deleta a tag especificada.",
-                    "\`!deletetag --help\` → Mostra esta ajuda."
+                    "\`?deletetag <nome>\` → Deleta a tag especificada.",
+                    "\`?deletetag --help\` → Mostra esta ajuda."
                 )
             });
             return;
