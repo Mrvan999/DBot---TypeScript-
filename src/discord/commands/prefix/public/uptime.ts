@@ -8,7 +8,7 @@ createEvent({
     name: "uptimePrefixCommand",
     event: "messageCreate",
     async run(message) {
-        if (!message.content.startsWith("!uptime")) return;
+        if (!message.content.startsWith("?uptime")) return;
 
         await commandPrefixLog(message);
 
@@ -36,18 +36,18 @@ createEvent({
         if (arg === "--help") {
             await message.channel.send({
                 content: brBuilder(
-                    "**Comandos disponíveis:**",
+                    `${icon.other_terminal} **Comandos do ?uptime**:`,
                     "",
-                    "`!uptime`             → Veja a quanto tempo o bot está online",
-                    "`!uptime --show-init` → Veja a data de inicialização do bot",
-                    "`!uptime --help`      → Mostra esta ajuda"
+                    "`?uptime`             → Veja a quanto tempo o bot está online",
+                    "`?uptime --show-init` → Veja a data de inicialização do bot",
+                    "`?uptime --help`      → Mostra esta ajuda"
                 )
             });
             return;
         }
 
         await message.channel.send({
-            content: `${icon.action_x} Argumento desconhecido. Use \`!uptime --help\`.`
+            content: `${icon.action_x} Argumento desconhecido. Use \`?uptime --help\`.`
         });
     }
 });
