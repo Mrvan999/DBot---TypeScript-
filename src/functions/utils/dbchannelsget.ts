@@ -15,6 +15,7 @@ export interface ChannelsSchema {
     avaliacaoChannelId: string;
     avaliacaoShowNameChannelId: string;
     ouvidorialogsChannelId: string;
+    atualizacoesbotChannelId: string;
   };
 }
 
