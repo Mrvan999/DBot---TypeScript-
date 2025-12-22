@@ -46,6 +46,13 @@ export interface CommandsSchema {
     sinonimo: string | Array<string>;
     args: Array<string>;
   };
+  help: {
+    nome: string;
+    descricao: string;
+    uso: string;
+    sinonimo: string | Array<string>;
+    args: Array<string>;
+  };
 }
 
 export async function loadCommandsFromDB(): Promise<CommandsSchema> {
