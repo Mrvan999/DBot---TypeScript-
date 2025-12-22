@@ -1,14 +1,24 @@
 import { createEvent } from "#base";
-import { brBuilder } from "@magicyan/discord";
 import { commandPrefixLog } from "../../../../../functions/utils/commandslogs.js";
 import { createTagDocument } from "../../../../../functions/utils/createTagDocument.js";
 import { icon } from "../../../../../functions/utils/emojis.js";
+import { createtagCommandHelpContainer } from "../../../../containers/commands/prefix/private/createtag/help.js";
 
 createEvent({
     name: "createTagPrefixCommand",
     event: "messageCreate",
     async run(message) {
-        if (!message.content.startsWith("?createtag")) return;
+        if (
+            !message.content.startsWith(`${dbcommands.prefixo.prefixo}${dbcommands.createtag.nome}`) &&
+            !(
+                Array.isArray(dbcommands.createtag.sinonimo)
+                    ? dbcommands.createtag.sinonimo.some(s =>
+                        message.content.startsWith(`${dbcommands.prefixo.prefixo}${s}`)
+                    )
+                    : dbcommands.createtag.sinonimo !== "Nenhum Sinônimo." &&
+                    message.content.startsWith(`${dbcommands.prefixo.prefixo}${dbcommands.createtag.sinonimo}`)
+            )
+        ) return;
 
         await commandPrefixLog(message);
 
@@ -22,7 +32,7 @@ createEvent({
         }
 
         const content = message.content.trim();
-        const withoutCommand = content.slice("?createtag".length).trim();
+        const withoutCommand = content.slice(`${dbcommands.prefixo.prefixo}${dbcommands.createtag.nome}`.length).trim();
 
         if (!withoutCommand) {
             await message.channel.send({
@@ -33,14 +43,10 @@ createEvent({
 
         const [tagName, ...rest] = withoutCommand.split(/\s+/);
 
-        if (tagName === "--help") {
+        if (tagName === "help") {
             await message.channel.send({
-                content: brBuilder(
-                    `${icon.other_terminal} **Comandos do ?createtag**:`,
-                    "",
-                    "\`?createtag <nome> <mensagem>\` → Cria uma nova tag com o nome e mensagem especificados.",
-                    "\`?createtag --help\` → Mostra esta ajuda."
-                )
+                flags: ["IsComponentsV2"],
+                components: [createtagCommandHelpContainer()]
             });
             return;
         }

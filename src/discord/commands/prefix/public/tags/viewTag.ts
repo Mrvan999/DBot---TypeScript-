@@ -1,29 +1,25 @@
 import { createEvent } from "#base";
-import { brBuilder } from "@magicyan/discord";
 import { db } from "../../../../../database/firestore.js";
 import { commandPrefixLog } from "../../../../../functions/utils/commandslogs.js";
 import { icon } from "../../../../../functions/utils/emojis.js";
+import { tagCommandHelpContainer } from "../../../../containers/commands/prefix/public/tag/help.js";
 
 createEvent({
     name: "viewTagPrefixCommand",
     event: "messageCreate",
     async run(message) {
-        if (!message.content.startsWith("?tag")) return;
-        if (message.content.startsWith("?tags")) return;
+        if (!message.content.startsWith(`${dbcommands.prefixo.prefixo}${dbcommands.tag.nome}`)) return;
+        if (message.content.startsWith(`${dbcommands.prefixo.prefixo}${dbcommands.tags.nome}`)) return;
 
         await commandPrefixLog(message);
 
         const args = message.content.trim().split(/\s+/).slice(1);
         const tag = args[0];
 
-        if (tag === "--help") {
+        if (tag === "help") {
             await message.channel.send({
-                content: brBuilder(
-                    `${icon.other_terminal} **Comandos do ?tag**:`,
-                    "",
-                    "\`?tag <nome>\` → Mostra a mensagem da tag especificada.",
-                    "\`?tag --help\` → Mostra esta ajuda."
-                )
+                flags: ["IsComponentsV2"],
+                components: [tagCommandHelpContainer()]
             });
             return;
         }

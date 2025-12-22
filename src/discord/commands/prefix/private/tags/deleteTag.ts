@@ -8,7 +8,17 @@ createEvent({
     name: "deleteTagPrefixCommand",
     event: "messageCreate",
     async run(message) {
-        if (!message.content.startsWith("?deletetag")) return;
+        if (
+            !message.content.startsWith(`${dbcommands.prefixo.prefixo}${dbcommands.deletetag.nome}`) &&
+            !(
+                Array.isArray(dbcommands.deletetag.sinonimo)
+                    ? dbcommands.deletetag.sinonimo.some(s =>
+                        message.content.startsWith(`${dbcommands.prefixo.prefixo}${s}`)
+                    )
+                    : dbcommands.deletetag.sinonimo !== "Nenhum Sinônimo." &&
+                    message.content.startsWith(`${dbcommands.prefixo.prefixo}${dbcommands.deletetag.sinonimo}`)
+            )
+        ) return;
 
         await commandPrefixLog(message);
 
@@ -24,7 +34,7 @@ createEvent({
         const args = message.content.trim().split(/\s+/).slice(1);
         const tag = args[0];
 
-        if (tag === "--help") {
+        if (tag === "help") {
             await message.channel.send({
                 content: brBuilder(
                     `${icon.other_terminal} **Comandos do ?deletetag**:`,

@@ -1,14 +1,24 @@
 import { BOT_START_TIME, createEvent } from "#base";
-import { brBuilder } from "@magicyan/discord";
 import { commandPrefixLog } from "../../../../functions/utils/commandslogs.js";
 import { icon } from "../../../../functions/utils/emojis.js";
 import { formatUptime } from "../../../../functions/utils/formatUptime.js";
+import { uptimeCommandHelpContainer } from "../../../containers/commands/prefix/public/uptime/help.js";
 
 createEvent({
     name: "uptimePrefixCommand",
     event: "messageCreate",
     async run(message) {
-        if (!message.content.startsWith("?uptime")) return;
+        if (
+            !message.content.startsWith(`${dbcommands.prefixo.prefixo}${dbcommands.uptime.nome}`) &&
+            !(
+                Array.isArray(dbcommands.uptime.sinonimo)
+                    ? dbcommands.uptime.sinonimo.some(s =>
+                        message.content.startsWith(`${dbcommands.prefixo.prefixo}${s}`)
+                    )
+                    : dbcommands.uptime.sinonimo !== "Nenhum Sinônimo." &&
+                    message.content.startsWith(`${dbcommands.prefixo.prefixo}${dbcommands.uptime.sinonimo}`)
+            )
+        ) return;
 
         await commandPrefixLog(message);
 
@@ -25,7 +35,7 @@ createEvent({
             return;
         }
 
-        if (arg === "--show-init") {
+        if (arg === "show-init") {
             const startedAt = new Date(BOT_START_TIME);
             await message.channel.send({
                 content: `${icon.clock} Fui iniciado em **${startedAt.toLocaleString("pt-BR")}**`
@@ -33,21 +43,16 @@ createEvent({
             return;
         }
 
-        if (arg === "--help") {
+        if (arg === "help") {
             await message.channel.send({
-                content: brBuilder(
-                    `${icon.other_terminal} **Comandos do ?uptime**:`,
-                    "",
-                    "`?uptime`             → Veja a quanto tempo o bot está online",
-                    "`?uptime --show-init` → Veja a data de inicialização do bot",
-                    "`?uptime --help`      → Mostra esta ajuda"
-                )
+                flags: ["IsComponentsV2"],
+                components: [uptimeCommandHelpContainer()]
             });
             return;
         }
 
         await message.channel.send({
-            content: `${icon.action_x} Argumento desconhecido. Use \`?uptime --help\`.`
+            content: `${icon.action_x} Argumento desconhecido. Use \`${dbcommands.prefixo.prefixo}${dbcommands.uptime.nome} help\`.`
         });
     }
 });
