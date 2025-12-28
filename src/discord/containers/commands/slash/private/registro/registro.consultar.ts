@@ -2,7 +2,7 @@ import { brBuilder, createContainer, createSection } from "@magicyan/discord";
 import { GuildMember } from "discord.js";
 import { icon } from "../../../../../../functions/utils/emojis.js";
 
-export function registroConsultarContainer(member: GuildMember, nome: string, patente: string, rg: string, opm: string, status: string) {
+export function registroConsultarContainer(member: GuildMember, nome: string, patente: string, rg: string, opm: string, status: string, bopmcount: string, apreensoescount: string) {
     return createContainer({
         components: [
             createSection(
@@ -11,7 +11,9 @@ export function registroConsultarContainer(member: GuildMember, nome: string, pa
                     `-# Patente: ${patente}`,
                     `-# Status: ${status}`,
                     `-# RG: ${rg}`,
-                    `-# OPM: ${opm}`
+                    `-# OPM: ${opm}`,
+                    `-# BOPMs: ${bopmcount}`,
+                    `-# Apreensões: ${apreensoescount}`
                 ),
                 {
                     media: {

@@ -7,7 +7,7 @@ export default {
     options: [
         {
             name: "rg",
-            description: "Informe o Registro Geral do Militar.",
+            description: "Informe o seu Registro Geral.",
             type: ApplicationCommandOptionType.String,
             required: true,
             autocomplete: true
@@ -38,6 +38,13 @@ export default {
             return;
         }
 
+        if (interaction.member.id !== data.memberId) {
+            await interaction.reply({
+                flags: ["Ephemeral"],
+                content: `${icon.action_x} Você não pode consultar registros de outros militares.`
+            })
+        }
+
         const militar = await interaction.guild.members.fetch(data.memberId);
 
         await interaction.reply({
@@ -51,7 +58,7 @@ export default {
 
         if (focused.name === "rg") {
             try {
-                const querySnapshot = await db.collection("militares").get();
+                const querySnapshot = await db.collection("militares").where("memberId", "==", interaction.user.id).get();
 
                 const sugestões = querySnapshot.docs
                     .map(doc => {
@@ -69,6 +76,6 @@ export default {
                 console.error("Erro no autocomplete:", err);
                 await interaction.respond([]);
             }
-        }
+        };
     }
 };

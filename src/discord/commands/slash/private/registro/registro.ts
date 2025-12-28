@@ -49,7 +49,9 @@ export default createCommand({
     async autocomplete(interaction) {
         const sub = interaction.options.getSubcommand();
 
+        if (sub === "consultar") return consultarHandler.autocomplete(interaction);
         if (sub === "editar") return editarHandler.autocomplete(interaction);
         if (sub === "criar") return criarHandler.autocomplete(interaction);
+        if (sub === "deletar") return deletarHandler.autocomplete(interaction);
     }
 });

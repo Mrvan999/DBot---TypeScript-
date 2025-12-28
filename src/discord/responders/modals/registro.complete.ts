@@ -18,7 +18,7 @@ createResponder({
         const [patente] = fields.getStringSelectValues("patente");
         const [opm] = fields.getStringSelectValues("opm");
 
-        await createRegistroDocument(interaction.member.id, name, rg, patente, opm, "Normalidade")
+        await createRegistroDocument(interaction.member.id, name, rg, patente, opm, "Normalidade", "0", "0")
 
         const displayName = await createDiscordName(interaction.member.id, interaction.guild)
         

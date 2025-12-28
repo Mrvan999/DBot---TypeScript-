@@ -158,6 +158,23 @@ export default {
             });
         }
 
+        const querySnapshot = await db.collection("militares").where("memberId", "==", interaction.user.id).limit(1).get();
+
+        if (querySnapshot.empty) {
+            await interaction.reply({
+                flags: ["Ephemeral"],
+                content: `${icon.action_x} Nenhum registro encontrado para este militar.`
+            });
+            return;
+        }
+
+        const docmilitar = querySnapshot.docs[0];
+        const datamilitar = docmilitar.data();
+
+        await docmilitar.ref.update({
+            bopm: Number(datamilitar.bopm ?? 0) + 1
+        });
+
         await interaction.reply({
             ephemeral: true,
             content: `${icon.action_check} Boletim registrado com sucesso.`

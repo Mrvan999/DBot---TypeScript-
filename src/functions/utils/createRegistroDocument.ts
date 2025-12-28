@@ -1,6 +1,6 @@
 import { db } from "../../database/firestore.js";
 
-export async function createRegistroDocument(memberId: string, nome: string, rg: string, patente:string, opm: string, status: string): Promise<void> {
+export async function createRegistroDocument(memberId: string, nome: string, rg: string, patente:string, opm: string, status: string, bopm: string, talao: string): Promise<void> {
     try {
         await db.collection("militares").doc(rg).set({
             memberId: memberId,
@@ -8,7 +8,9 @@ export async function createRegistroDocument(memberId: string, nome: string, rg:
             rg: rg,
             patente: patente,
             opm: opm,
-            status: status
+            status: status,
+            bopm: bopm,
+            talao: talao
         });
         console.log("Documento de militar criado com sucesso!");
     } catch (error) {

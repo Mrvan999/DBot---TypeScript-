@@ -9,7 +9,8 @@ export default {
             name: "rg",
             description: "Informe o Registro Geral do Militar.",
             type: ApplicationCommandOptionType.String,
-            required: true
+            required: true,
+            autocomplete: true
         },
         {
             name: "nome",
@@ -37,7 +38,19 @@ export default {
             type: ApplicationCommandOptionType.String,
             required: false,
             autocomplete: true
-        }
+        },
+        {
+            name: "bopm",
+            description: "Informe a quantia de BOPMs que o militar possui.",
+            type: ApplicationCommandOptionType.String,
+            required: false
+        },
+        {
+            name: "talao",
+            description: "Informe a quantia de apreensões que o militar possui.",
+            type: ApplicationCommandOptionType.String,
+            required: false
+        },
     ],
 
     async run(interaction: ChatInputCommandInteraction<"cached">) {
@@ -46,6 +59,8 @@ export default {
         const patente = interaction.options.getString("patente") ?? "Não Selecionado";
         const opm = interaction.options.getString("opm") ?? "Não Selecionado";
         const status = interaction.options.getString("status") ?? "Não Selecionado";
+        const bopm = interaction.options.getString("bopm") ?? "Não Selecionado";
+        const talao = interaction.options.getString("talao") ?? "Não Selecionado";
 
         const docRef = db.collection("militares").doc(rg);
         let doc = await docRef.get();
@@ -82,7 +97,19 @@ export default {
             })
         };
 
-        if (nome === "Não Selecionado" && patente === "Não Selecionado" && opm === "Não Selecionado" && status === "Não Selecionado") {
+        if (bopm !== "Não Selecionado") {
+            await docRef.update({
+                bopm: bopm
+            })
+        };
+
+        if (talao !== "Não Selecionado") {
+            await docRef.update({
+                talao: talao
+            })
+        };
+
+        if (nome === "Não Selecionado" && patente === "Não Selecionado" && opm === "Não Selecionado" && status === "Não Selecionado" && bopm === "Não Selecionado" && talao === "Não Selecionado") {
             await interaction.reply({
                 flags: ["Ephemeral"],
                 content: `${icon.action_remove} Nada foi selecionado, o militar não foi atualizado.`
@@ -106,7 +133,7 @@ export default {
 
         await interaction.reply({
             flags: ["Ephemeral", "IsComponentsV2"],
-            components: [registroConsultarContainer(militar, data.nome, data.patente, data.rg, data.opm, data.status)]
+            components: [registroConsultarContainer(militar, data.nome, data.patente, data.rg, data.opm, data.status, data.bopm, data.talao)]
         })
     },
 
@@ -187,6 +214,26 @@ export default {
             return interaction.respond(
                 filtradas.map(s => ({ name: s, value: s }))
             );
+        } else if (focused.name === "rg") {
+            try {
+                const querySnapshot = await db.collection("militares").get();
+
+                const sugestões = querySnapshot.docs
+                    .map(doc => {
+                        const data = doc.data();
+                        return {
+                            name: `${data.nome} (${doc.id}) - ${data.patente}`,
+                            value: doc.id
+                        };
+                    })
+                    .filter(sug => sug.name.toLowerCase().includes(focused.value.toLowerCase()))
+                    .slice(0, 25);
+
+                await interaction.respond(sugestões);
+            } catch (err) {
+                console.error("Erro no autocomplete:", err);
+                await interaction.respond([]);
+            }
         }
     }
 };

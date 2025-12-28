@@ -42,7 +42,19 @@ export default {
             type: ApplicationCommandOptionType.String,
             required: true,
             autocomplete: true
-        }
+        },
+        {
+            name: "bopm",
+            description: "Informe a quantia de BOPMs que o militar possui.",
+            type: ApplicationCommandOptionType.String,
+            required: true
+        },
+        {
+            name: "talao",
+            description: "Informe a quantia de apreensões que o militar possui.",
+            type: ApplicationCommandOptionType.String,
+            required: true
+        },
     ],
 
     async run(interaction: ChatInputCommandInteraction<"cached">) {
@@ -52,12 +64,14 @@ export default {
         const patente = interaction.options.getString("patente")!;
         const opm = interaction.options.getString("opm")!;
         const status = interaction.options.getString("status")!;
+        const bopm = interaction.options.getString("bopm")!;
+        const talao = interaction.options.getString("talao")!;
 
-        await createRegistroDocument(militar.id, nome, rg, patente, opm, status);
+        await createRegistroDocument(militar.id, nome, rg, patente, opm, status, bopm, talao);
 
         await interaction.reply({
             flags: ["Ephemeral", "IsComponentsV2"],
-            components: [registroConsultarContainer(militar, nome, patente, rg, opm, status)]
+            components: [registroConsultarContainer(militar, nome, patente, rg, opm, status, bopm, talao)]
         })
     },
 

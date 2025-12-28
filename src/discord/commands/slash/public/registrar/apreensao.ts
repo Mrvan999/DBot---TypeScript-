@@ -1,5 +1,6 @@
 import { ApplicationCommandOptionType, AutocompleteInteraction, ChatInputCommandInteraction } from "discord.js";
 import { promises as fs } from "fs";
+import { db } from "../../../../../database/firestore.js";
 import { icon } from "../../../../../functions/utils/emojis.js";
 
 export default {
@@ -84,6 +85,23 @@ export default {
         await talapreesChannel.send({
             content: messagemd,
             files: [foto]
+        });
+
+        const querySnapshot = await db.collection("militares").where("memberId", "==", interaction.user.id).limit(1).get();
+
+        if (querySnapshot.empty) {
+            await interaction.reply({
+                flags: ["Ephemeral"],
+                content: `${icon.action_x} Nenhum registro encontrado para este militar.`
+            });
+            return;
+        }
+
+        const doc = querySnapshot.docs[0];
+        const data = doc.data();
+
+        await doc.ref.update({
+            talao: Number(data.talao ?? 0) + 1
         });
 
         await interaction.reply({
